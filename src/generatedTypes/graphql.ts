@@ -21,7 +21,7 @@ export type Mutation = {
   createAdmin?: Maybe<Status>;
   registerUserWithEmail?: Maybe<Status>;
   sendMessage?: Maybe<Status>;
-  sendMessageToRoom?: Maybe<Status>;
+  sendMessageToRoom_Room1?: Maybe<Status>;
   updateUser?: Maybe<ShowUserResponse>;
 };
 
@@ -46,9 +46,8 @@ export type MutationSendMessageArgs = {
 };
 
 
-export type MutationSendMessageToRoomArgs = {
+export type MutationSendMessageToRoom_Room1Args = {
   message: Scalars['String']['input'];
-  room: Scalars['String']['input'];
 };
 
 
@@ -211,7 +210,7 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
   createAdmin?: Resolver<Maybe<ResolversTypes['Status']>, ParentType, ContextType, RequireFields<MutationCreateAdminArgs, 'email' | 'name' | 'password' | 'secretKey'>>;
   registerUserWithEmail?: Resolver<Maybe<ResolversTypes['Status']>, ParentType, ContextType, RequireFields<MutationRegisterUserWithEmailArgs, 'email' | 'name' | 'password'>>;
   sendMessage?: Resolver<Maybe<ResolversTypes['Status']>, ParentType, ContextType, RequireFields<MutationSendMessageArgs, 'message'>>;
-  sendMessageToRoom?: Resolver<Maybe<ResolversTypes['Status']>, ParentType, ContextType, RequireFields<MutationSendMessageToRoomArgs, 'message' | 'room'>>;
+  sendMessageToRoom_Room1?: Resolver<Maybe<ResolversTypes['Status']>, ParentType, ContextType, RequireFields<MutationSendMessageToRoom_Room1Args, 'message'>>;
   updateUser?: Resolver<Maybe<ResolversTypes['ShowUserResponse']>, ParentType, ContextType, RequireFields<MutationUpdateUserArgs, 'name' | 'userId'>>;
 };
 

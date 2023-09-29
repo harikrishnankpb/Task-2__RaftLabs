@@ -10,7 +10,8 @@ export const sendMessage = async (message: string, email: string) => {   //Updat
 }
 export const sendMessageToRoom = async (message: string, email: string, room: string) => {
     try {
-        io.to(room).emit('room-message', { email, message }); // Send the message to the specified room
+        console.log(room)
+        io.to(room).emit('privateMsg', { email, message }); // Send the message to the specified room =>Here room-1
     } catch (error) {
         throw new Error('Error while sending message');
     }

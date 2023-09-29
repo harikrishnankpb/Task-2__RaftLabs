@@ -10,22 +10,38 @@
 
 <body>
     <h1>Display message</h1>
+    <h2>Public messages</h1>
 
+        <div id="messages"></div>
+        <br>
+        <br>
+        <h2>Private room messages </h1>
+            <h2>
+                Room:Room-1
+            </h2>
+            <div id="privateMessages"></div>
 
-    <div id="messages"></div>
+            <script src="/socket.io/socket.io.js"></script>
+            <script>
+                const socket = io();
 
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-        const socket = io();
-
-        const allMessages = document.getElementById("messages");
-        socket.on("message", (message) => {
-            const p = document.createElement("h1");
-            console.log(message.message)
-            p.innerText = message.email + "   :   " + message.message;
-            allMessages.appendChild(p);
-        });
-    </script>
+                const allMessages = document.getElementById("messages");
+                const privateMessages = document.getElementById("privateMessages");
+                socket.on("message", (message) => {
+                    const p = document.createElement("h4");
+                    console.log(message.message)
+                    p.innerText = message.email + "   :   " + message.message;
+                    allMessages.appendChild(p);
+                });
+                socket.emit('joinRoom', 'room-1')
+                socket.on("privateMsg", (message) => {
+                    console.log(message)
+                    const p = document.createElement("h4");
+                    console.log(message.message)
+                    p.innerText = message.email + "   :   " + message.message;
+                    privateMessages.appendChild(p);
+                });
+            </script>
 </body>
 
 </html>

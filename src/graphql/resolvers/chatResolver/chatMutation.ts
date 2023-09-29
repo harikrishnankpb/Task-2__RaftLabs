@@ -1,4 +1,4 @@
-import { MutationSendMessageArgs, MutationSendMessageToRoomArgs, Status } from "@generatedTypes";
+import { MutationSendMessageArgs, MutationSendMessageToRoom_Room1Args, Status } from "@generatedTypes";
 import { ExpressType } from "generatedTypes/commonTypes";
 import auth from "../../../utilities/auth";
 import { sendMessage, sendMessageToRoom } from './chatHelper'
@@ -23,13 +23,13 @@ export default {
             }
         }
     },
-    async sendMessageToRoom(_: void, input: MutationSendMessageToRoomArgs, { req }: ExpressType): Promise<Status> { //Send message to room
+    async sendMessageToRoom_Room1(_: void, input: MutationSendMessageToRoom_Room1Args, { req }: ExpressType): Promise<Status> { //Send message to room
         let token: any = req.headers.token || '';
         let userInfo = await auth(token, 1);
         try {
             let message = input.message;
             let email = userInfo.email;
-            let room = input.room; // Add the room name from the input
+            let room = 'room-1' //I just hardcoded room name for front end-simplicity
             sendMessageToRoom(message, email, room);
             return {
                 success: true,

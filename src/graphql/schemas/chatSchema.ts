@@ -5,9 +5,8 @@ const typeDefs = gql`
     sendMessage(
       message:String!
     ): Status
-    sendMessageToRoom(
-        message:String!,
-        room:String!
+    sendMessageToRoom_Room1(
+        message:String!
       ): Status
   }  
 `
